@@ -1,9 +1,14 @@
 <h1>Portfolio items</h1>
 
-<% @portfolio_items.each do |portfolio_items| %>
-	<p> <%= portfolio_items.title %> </p>
-	<p> <%= portfolio_items.subtitle %> </p>
-	<p> <%= portfolio_items.body %> </p>
-	<p> <%= portfolio_items.thumb_image %> </p>
-	<%= image_tag portfolio_items.thumb_image if portfolio_items.thumb_image.present? %> 
+<%= link_to "create new portfolio", new_portfolio_path%>
+
+<% @portfolio_items.each do |portfolio_item| %>
+	<p> <%= portfolio_item.title %> </p>
+	<p> <%= portfolio_item.subtitle %> </p>
+	<p> <%= portfolio_item.body %> </p>
+	<p> <%= portfolio_item.thumb_image %> </p>
+	<%= image_tag portfolio_item.thumb_image if portfolio_item.thumb_image.present? %> 
+	<%= link_to "Edit", edit_portfolio_path(portfolio_item.id)%>
+	<!-- A second way to generate the edit through the html form -->
+	<a href="/portfolios/<%= portfolio_item.id %>/edit">Edit2</a>
 <% end %>
